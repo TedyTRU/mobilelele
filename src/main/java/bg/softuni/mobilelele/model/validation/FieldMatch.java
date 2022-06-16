@@ -1,5 +1,6 @@
 package bg.softuni.mobilelele.model.validation;
 
+
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.ElementType;
@@ -8,9 +9,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD, ElementType.FIELD})
-@Constraint(validatedBy = UniqueUserEmailValidator.class)
-public @interface UniqueUserEmail {
+@Target(ElementType.TYPE)
+@Constraint(validatedBy = FieldMatchValidator.class)
+public @interface FieldMatch {
+
+    String first();
+
+    String second();
 
     String message() default "Invalid Email";
 
@@ -19,7 +24,3 @@ public @interface UniqueUserEmail {
     Class<? extends Payload>[] payload() default {};
 
 }
-
-
-
-
