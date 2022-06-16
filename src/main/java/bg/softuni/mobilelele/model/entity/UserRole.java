@@ -1,6 +1,6 @@
 package bg.softuni.mobilelele.model.entity;
 
-import bg.softuni.mobilelele.model.entity.enums.RoleEnum;
+import bg.softuni.mobilelele.model.enums.RoleEnum;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
