@@ -58,7 +58,8 @@ public class UserService {
     private void login(User user) {
         currentUser
                 .setLoggedIn(true)
-                .setName(user.getFirstName() + " " + user.getLastName());
+                .setName(user.getFirstName() + " " + user.getLastName())
+                .setEmail(user.getEmail());
     }
 
     public void logout() {

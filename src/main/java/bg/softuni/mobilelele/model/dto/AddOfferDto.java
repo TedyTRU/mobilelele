@@ -3,14 +3,20 @@ package bg.softuni.mobilelele.model.dto;
 import bg.softuni.mobilelele.model.enums.EngineEnum;
 import bg.softuni.mobilelele.model.enums.TransmissionEnum;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 public class AddOfferDto {
 
+    private Long modelId;
     private EngineEnum engine;
     private String imageUrl;
     private TransmissionEnum transmission;
+    private Integer price;
+    private Integer year;
+    private String description;
 
     @NotNull
     public EngineEnum getEngine() {
@@ -39,6 +45,49 @@ public class AddOfferDto {
 
     public AddOfferDto setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
+        return this;
+    }
+
+    @NotNull
+    @Positive
+    public Long getModelId() {
+        return modelId;
+    }
+
+    public AddOfferDto setModelId(Long modelId) {
+        this.modelId = modelId;
+        return this;
+    }
+
+    @Positive
+    @NotNull
+    public Integer getPrice() {
+        return price;
+    }
+
+    public AddOfferDto setPrice(Integer price) {
+        this.price = price;
+        return this;
+    }
+
+    @NotNull
+    @Min(1900)
+    public Integer getYear() {
+        return year;
+    }
+
+    public AddOfferDto setYear(Integer year) {
+        this.year = year;
+        return this;
+    }
+
+    @NotEmpty
+    public String getDescription() {
+        return description;
+    }
+
+    public AddOfferDto setDescription(String description) {
+        this.description = description;
         return this;
     }
 }
