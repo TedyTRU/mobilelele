@@ -1,21 +1,31 @@
 package bg.softuni.mobilelele.model.dto;
 
+import bg.softuni.mobilelele.model.validation.UniqueUserEmail;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class UserLoginDto {
 
-    private String username;
+    private String email;
     private String password;
 
     public UserLoginDto() {
     }
 
-    public String getUsername() {
-        return username;
+    @NotEmpty(message = "User email should be provided.")
+    @Email(message = "User email should be valid.")
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String username) {
+        this.email = username;
     }
 
+    @NotEmpty
+    @Size(min = 5)
     public String getPassword() {
         return password;
     }
@@ -27,7 +37,7 @@ public class UserLoginDto {
     @Override
     public String toString() {
         return "UserLoginDto{" +
-                "username='" + username + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + (password != null ? "[PROVIDED]" : null) + '\'' +
                 '}';
     }

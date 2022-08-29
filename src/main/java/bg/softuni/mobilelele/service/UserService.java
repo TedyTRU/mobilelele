@@ -32,10 +32,10 @@ public class UserService {
 
     public boolean login(UserLoginDto loginDto) {
         Optional<User> userOpt = userRepository
-                .findByEmail(loginDto.getUsername());
+                .findByEmail(loginDto.getEmail());
 
         if (userOpt.isEmpty()) {
-            LOGGER.info("User not found. User name: {}", loginDto.getUsername());
+            LOGGER.info("User not found. User name: {}", loginDto.getEmail());
             return false;
         }
 
@@ -68,19 +68,10 @@ public class UserService {
 
     public void registerAndLogin(UserRegisterDto userRegisterDto) {
 
-//        User newUser = new User();
-//        newUser.setActive(true);
-//        newUser.setEmail(userRegisterDto.getEmail());
-//        newUser.setFirstName(userRegisterDto.getFirstName());
-//        newUser.setLastName(userRegisterDto.getLastName());
-//        newUser.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
-
         User newUser = userMapper.userDtoToUserEntity(userRegisterDto);
         newUser.setPassword(passwordEncoder.encode(userRegisterDto.getPassword()));
 
-        //newUser = userRepository.save(newUser);
         userRepository.save(newUser);
-
         login(newUser);
 
     }

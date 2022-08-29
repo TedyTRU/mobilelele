@@ -4,7 +4,6 @@ import bg.softuni.mobilelele.model.validation.FieldMatch;
 import bg.softuni.mobilelele.model.validation.UniqueUserEmail;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 

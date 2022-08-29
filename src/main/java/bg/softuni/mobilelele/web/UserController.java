@@ -41,11 +41,11 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             redirectAttributes
                     .addFlashAttribute("userLoginModel", userLoginDto)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userModel", bindingResult);
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginModel", bindingResult);
 
             bindingResult.rejectValue("password", "InvalidPasswordError", "Invalid password.");
 
-            return "redirect:/users/logout";
+            return "redirect:login";
         }
 
         userService.login(userLoginDto);

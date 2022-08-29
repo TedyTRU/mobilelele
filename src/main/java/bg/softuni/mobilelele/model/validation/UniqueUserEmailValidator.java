@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 
 public class UniqueUserEmailValidator implements ConstraintValidator<UniqueUserEmail, String> {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UniqueUserEmailValidator(UserRepository userRepository) {
         this.userRepository = userRepository;
